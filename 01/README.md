@@ -20,4 +20,14 @@ $md = $table->generate(new MDRenderer());
 &nbsp;
 > :no_entry: *Jeśli nie posiadasz materiałów do tego zadania tj. **Wideo**, znajdziesz je na stronie [laracasts.com](https://laracasts.com/referral/bogolubow)*
 
-> :arrow_left: ~~*poprzednie zadanie*~~ | [*następne zadanie*](./../02) :arrow_right:
+> :arrow_left: ~~*poprzednie zadanie*~~ | [*następne zadanie*](../02) :arrow_right:
+
+Moja propozycja:
+Klasę Table podzieliłam na:
+1. class Column -- własciwości kolumny 
+2. class TableConfigurator -- przechowuje dozwolone akcje ---  walidowane przez class ActionValidator 
+3. class Tabela -- informacje o Tabeli, nazwa, kolumny i akcje
+4. class DatabaseDataTable -- pobranie informacji do uzupełnienia tabeli z DB
+5. class HtmlTableRender -- służy do generowania Html dla Tabeli
+
+Przykład przygotowany na podstawie projektu który wykonalam po 4 dziale.
