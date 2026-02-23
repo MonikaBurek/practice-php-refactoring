@@ -1,15 +1,33 @@
 <?php
 
-use Core\Noticer;
-use Core\QueryBuilder;
-use Core\Session;
+use Core\App;
+use Core\Database;
+use Core\Exceptions\QueryException;
+use Core\QueryBuilderSimple;
+use Core\QueryExecutor;
+use Core\QueryValidator;
 
-session_start();
-$qb = new QueryBuilder();
+$qEx = new QueryExecutor(App::resolve(Database::class));
+$builder = new QueryBuilderSimple(new QueryValidator(), $qEx);
 
-$query = $qb->table('users')
-    ->select('id', 'email')
-    ->where('active', '=', 1)
-    ->where('role', '=', 'admin')
-    ->limit(10)
+try {
+//    /**  SELECT  */
+//    $result = $builder
+//        ->table('users')
+//        ->select()
+//        ->limit(8)
+//        ->where('id','=','100')
+//        ->get();
+    /**  DELETE WITHOUT WHERE */
+$result = $builder
+    ->table('users')
+    ->delete()
     ->get();
+}  catch (QueryException $e) {
+    echo "Błąd zapytania: " . $e->getMessage();
+
+}
+
+
+
+//dd($result);

@@ -3,7 +3,6 @@
 namespace Core;
 
 use App\Enums\QueryName;
-use Core\Database;
 
 class QueryBuilderSimple
 {

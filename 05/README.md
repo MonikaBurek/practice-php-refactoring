@@ -10,6 +10,7 @@ Zbuduj odpowiednie wyjątki na podstawie klasy `Exception`.
 
 Zaprezentuj przechwytywanie wyjątków przy pomocy bloku `try...catch`.
 
+Zrealizowane w zadaniu 3.
 
 &nbsp;
 > :no_entry: *Jeśli nie posiadasz materiałów do tego zadania tj. **Wideo**, znajdziesz je na stronie [laracasts.com](https://laracasts.com/referral/bogolubow)*
