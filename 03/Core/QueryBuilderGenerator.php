@@ -14,13 +14,13 @@ class QueryBuilderGenerator
     private string $queryName;
     private QueryValidator $validator;
 
-    public function __construct(string $table, array $columns, array $wheres, ?int $limit, string $queryName)
+    public function __construct(array $attributes)
     {
-        $this->table = $table;
-        $this->columns = $columns;
-        $this->wheres = $wheres;
-        $this->limit = $limit;
-        $this->queryName = $queryName;
+        $this->table = $attributes['table'];
+        $this->columns = $attributes['columns'];
+        $this->wheres = $attributes['wheres'];
+        $this->limit = $attributes['limit'];
+        $this->queryName = $attributes['queryName'];
         $this->validator = new QueryValidator();
     }
 

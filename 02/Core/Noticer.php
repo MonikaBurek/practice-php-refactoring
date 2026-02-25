@@ -34,7 +34,13 @@ class Noticer
         $this->add($message, NoticeType::ERROR);
     }
 
-    public function getAll() {
+    public function getAll() : array
+    {
         return Session::get($this->sessionKey);
+    }
+
+    public function clear() :void
+    {
+        Session::unflashForKey($this->sessionKey);
     }
 }

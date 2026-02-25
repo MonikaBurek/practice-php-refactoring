@@ -8,6 +8,12 @@ use Core\FormUser;
 $db = App::resolve(Database::class);
 $errors = [];
 
+if (!isset($_POST['id'])) {
+    echo 'Akcja niemożliwa do wykonania.';
+    header('location: /');
+    exit();
+}
+
 $user= $db->query(
     ' select * from users where id = :id',
     [
@@ -31,9 +37,9 @@ if (count($errors)) {
 }
 
 $db->query('update users set name = :name, email = :email where id = :id', [
-    'id' => $_POST['id'],
-    'name' => $_POST['name'],
-    'email' => $_POST['email'],
+    'id' => $form->get('id'),
+    'name' => $form->get('name'),
+    'email' => $form->get('email'),
 ]);
 
 header('location: /users');

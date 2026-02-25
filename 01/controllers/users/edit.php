@@ -4,6 +4,7 @@ use App\Enums\FormAction;
 use Core\App;
 use Core\Database;
 use Core\FormUser;
+use Core\FormValidator;
 use Core\TableUser;
 
 $db = App::resolve(Database::class);
@@ -12,7 +13,13 @@ $userForm = new FormUser();
 $form = $userForm->make($_POST);
 
 $userTable = new TableUser();
-$table = $userTable->make();
+$table = $userTable->make(new FormValidator());
+
+if (!isset($_GET['id'])) {
+    echo 'Akcja niemożliwa do wykonania.';
+    header('location: /');
+    exit();
+}
 
 $user = $db->query(
     ' select * from users where id = :id',

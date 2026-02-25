@@ -98,14 +98,15 @@ class QueryBuilderSimple
         // INSERT INTO users (name, email, active) VALUES ('John Doe', 'john@example.com', 1);
         // UPDATE users SET name = 'Jane Doe' WHERE id = 5;
         // DELETE FROM users WHERE id = 5;
+        $attributes = [
+            'table' => $this->table,
+            'columns' => $this->columns,
+            'wheres' => $this->wheres,
+            'limit' => $this->limit,
+            'queryName' => $this->queryName
+        ];
 
-        $data = new QueryBuilderGenerator(
-            $this->table,
-            $this->columns,
-            $this->wheres,
-            $this->limit,
-            $this->queryName
-        );
+        $data = new QueryBuilderGenerator($attributes);
 
         return $data->createQuery();
     }

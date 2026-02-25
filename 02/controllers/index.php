@@ -1,7 +1,7 @@
 <?php
 
 use Core\Noticer;
-use Core\Session;
+use Core\NoticerPrinter;
 
 session_start();
 
@@ -10,13 +10,12 @@ $noticer = new Noticer();
 $noticer->success('Dane zapisane poprawnie.');
 $noticer->error('Wystąpił błąd podczas zapisu.');
 $noticer->warning('Twój profil jest niekompletny. Uzupełnij brakujące dane.');
+$printer = new NoticerPrinter();
 
 $messages = $noticer->getAll();
 if (!empty($messages)) {
-    foreach ($messages as $msg) {
-        echo "<div class='{$msg['type']}'>{$msg['message']}</div>";
-    }
-    Session::unflash();
+    echo $printer->createHtmlForMessages($messages);
+    $noticer->clear();
 } else {
-    echo "<div>Brak wiadmości do wyświetlenia</div>";
+    echo $printer->createEmptyMessageHtml();
 }

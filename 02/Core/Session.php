@@ -33,10 +33,19 @@ class Session
         unset($_SESSION['_flash']);
     }
 
+    public static function unflashForKey ($key) {
+
+        if (isset($_SESSION['_flash'][$key])) {
+            unset($_SESSION['_flash'][$key]);
+        }
+    }
+
     public static function flush()
     {
         $_SESSION = [];
     }
+
+
 
     public static function destroy()
     {
