@@ -33,3 +33,9 @@ function abort($code = 404)
 
     die();
 }
+
+function displayMessageAndRedirctHome(string $text) : void {
+    echo '';
+    header('location: /');
+    exit();
+}

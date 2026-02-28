@@ -9,9 +9,7 @@ $db = App::resolve(Database::class);
 $errors = [];
 
 if (!isset($_POST['id'])) {
-    echo 'Akcja niemożliwa do wykonania.';
-    header('location: /');
-    exit();
+    $this->displayMessageAndRedirctHome('Akcja niemożliwa do wykonania.');
 }
 
 $user= $db->query(
